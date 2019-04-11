@@ -67,7 +67,7 @@ constrOptim <-
         theta <- a$par
         obj <- f(theta, ...)
         if (is.finite(r) && is.finite(r.old) &&
- 	          abs(r - r.old) < (1e-3 + abs(r)) * outer.eps) break
+ 	        abs(r - r.old) < (1e-3 + abs(r)) * outer.eps) break
         if (s.mu * obj > s.mu * obj.old) break
     }
     if (i == outer.iterations) {
