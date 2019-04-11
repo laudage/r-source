@@ -63,11 +63,11 @@ constrOptim <-
         a <- optim(theta.old, fun, gradient, control = control,
                    method = method, hessian = hessian, ...)
         r <- a$value
-        if (is.finite(r) && is.finite(r.old) &&
- 	    abs(r - r.old) < (1e-3 + abs(r)) * outer.eps) break
+        totCounts <- totCounts + a$counts
         theta <- a$par
- 	totCounts <- totCounts + a$counts
         obj <- f(theta, ...)
+        if (is.finite(r) && is.finite(r.old) &&
+ 	          abs(r - r.old) < (1e-3 + abs(r)) * outer.eps) break
         if (s.mu * obj > s.mu * obj.old) break
     }
     if (i == outer.iterations) {
